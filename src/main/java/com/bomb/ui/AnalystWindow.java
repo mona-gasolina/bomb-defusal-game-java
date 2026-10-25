@@ -98,7 +98,6 @@ public class AnalystWindow extends JFrame {
         setSize(1200, 760);
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
-        setVisible(true);
 
         poller = new Timer(1000, e -> poll());
         poller.start();
@@ -242,6 +241,6 @@ public class AnalystWindow extends JFrame {
     private void backToMenu() {
         poller.stop();
         dispose();
-        new Launcher();
+        new Launcher().setVisible(true);
     }
 }

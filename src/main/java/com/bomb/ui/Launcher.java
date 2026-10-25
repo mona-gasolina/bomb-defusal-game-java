@@ -120,13 +120,12 @@ public class Launcher extends JFrame {
         setSize(760, 760);
         setMinimumSize(new Dimension(680, 700));
         setLocationRelativeTo(null);
-        setVisible(true);
     }
 
     private void begin() {
         String name = team.getText().trim().isEmpty() ? "TEAM" : team.getText().trim();
         if (analyst.isSelected()) {
-            new AnalystWindow(hostIp.getText().trim());
+            new AnalystWindow(hostIp.getText().trim()).setVisible(true);
             dispose();
             return;
         }
@@ -144,7 +143,7 @@ public class Launcher extends JFrame {
             @Override
             protected void done() {
                 try {
-                    new TechnicianWindow(get(), name, mins);
+                    new TechnicianWindow(get(), name, mins).setVisible(true);
                     dispose();
                 } catch (Exception ex) {
                     info.setText("Could not start the server. Is port 8080 already in use?");

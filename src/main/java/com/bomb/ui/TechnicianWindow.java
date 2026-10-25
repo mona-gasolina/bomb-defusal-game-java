@@ -81,7 +81,6 @@ public class TechnicianWindow extends JFrame {
         clock = new Timer(200, e -> tick());
         clock.start();
         tick();
-        setVisible(true);
     }
 
     // 6 puzzles picked at random from the 8
@@ -150,7 +149,7 @@ public class TechnicianWindow extends JFrame {
         restart.addActionListener(e -> {
             if (confirm("Throw this bomb away and start a new one?")) {
                 close();
-                new TechnicianWindow(game, team, minutes);
+                new TechnicianWindow(game, team, minutes).setVisible(true);
             }
         });
         JMenuItem quit = new JMenuItem("Back to main menu");
@@ -160,11 +159,13 @@ public class TechnicianWindow extends JFrame {
 
         JMenu help = new JMenu("Help");
         JMenuItem how = new JMenuItem("How to play");
-        how.addActionListener(e -> JOptionPane.showMessageDialog(this,
-                "Describe the bomb to your analyst. They have the manual and tell you what to do.\n"
-                        + "Solve all 6 puzzles before the timer runs out. 3 strikes and it explodes.\n\n"
-                        + "The analyst connects to this laptop's IP (shown on the start screen).",
-                "How to play", JOptionPane.INFORMATION_MESSAGE));
+        String howToPlay = """
+                Describe the bomb to your analyst. They have the manual and tell you what to do.
+                Solve all 6 puzzles before the timer runs out. 3 strikes and it explodes.
+
+                The analyst connects to this laptop's IP (shown on the start screen).""";
+        how.addActionListener(e -> JOptionPane.showMessageDialog(this, howToPlay, "How to play",
+                JOptionPane.INFORMATION_MESSAGE));
         help.add(how);
 
         bar.add(gameMenu);
@@ -206,10 +207,10 @@ public class TechnicianWindow extends JFrame {
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         close();
         if (choice == 0) {
-            new TechnicianWindow(game, team, minutes);
+            new TechnicianWindow(game, team, minutes).setVisible(true);
         } else {
             game.clear();
-            new Launcher();
+            new Launcher().setVisible(true);
         }
     }
 
@@ -217,7 +218,7 @@ public class TechnicianWindow extends JFrame {
         if (over || confirm("Leave this bomb and go back to the main menu?")) {
             close();
             game.clear();
-            new Launcher();
+            new Launcher().setVisible(true);
         }
     }
 

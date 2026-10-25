@@ -18,7 +18,7 @@ public class BombApp {
     public static void main(String[] args) {
         // The app always opens the start screen first.
         // Spring Boot only starts if this laptop is the technician.
-        SwingUtilities.invokeLater(Launcher::new);
+        SwingUtilities.invokeLater(() -> new Launcher().setVisible(true));
     }
 
     // Starts the Spring Boot server (embedded Tomcat) once and returns the game service
