@@ -135,16 +135,16 @@ left). Then they press SET.
 
 Wrong switches when SET is pressed is a strike.
 
-## COLOURS
-The bomb flashes a sequence of coloured lights. For every colour that
-flashes, the technician must press a DIFFERENT colour from the table.
+## COLOUR CODE
+The bomb has 4 coloured lights in a row, numbered 1 to 4 from the left,
+and a box to type a 4-digit code.
 
-Which row to use depends on two things:
-  - does the serial number have a vowel?
-  - how many strikes does the bomb have RIGHT NOW?
+Ask for the colours from left to right and turn each one into a digit
+with the table below.
 
-The sequence starts with 1 colour. Each time it is entered correctly
-it gets one colour longer. Finish 3 rounds to solve it.
+  If the serial number has a VOWEL, type the code BACKWARDS.
 
-A wrong press is a strike and the round starts again.
-(Remember: after a strike, use the row for the new strike count!)
+Example: RED, BLUE, RED, GREEN  ->  3731   (with a vowel: 1373)
+
+The technician types the code and presses ENTER.
+A wrong code is a strike.

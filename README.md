@@ -25,7 +25,7 @@ The two players talk to each other to defuse the bomb before the timer runs out.
 | Shapes | Flashing coloured shapes. Do the maths and type the answer. |
 | Maze | A grid with 2 circles and invisible walls. Walk from one circle to the other. |
 | Switches | 3 lights and 5 switches. Set the switches the right way. |
-| Colours | Flashing colours. Press the matching colours from the table. |
+| Colour Code | 4 coloured lights. Turn them into a 4-digit code and type it. |
 
 The rules for all of them are in the analyst's manual (inside the game).
 
@@ -90,7 +90,7 @@ Technician laptop                              Analyst laptop
 ```
 
 - The **game data** lives in plain text files in `src/main/resources/data`
-  (manual, symbols, mazes, switch and colour tables, words).
+  (manual, symbols, mazes, switch table, colour digits, words).
   The bomb and the manual read the same files, so they always match.
 - **Scores** are saved to `scores.csv` next to the jar, and the best ones are shown on the start screen.
 
@@ -103,7 +103,7 @@ See **[CODE_GUIDE.md](CODE_GUIDE.md)** for a file-by-file explanation of the cod
 | Topic | Where |
 |---|---|
 | Event handling, listeners | Buttons (`ActionListener`), toggles (`ItemListener`), list (`ListSelectionListener`) |
-| Adapter classes | `MouseAdapter` (wires, button, colours), `WindowAdapter` (closing windows) |
+| Adapter classes | `MouseAdapter` (wires, big button), `WindowAdapter` (closing windows) |
 | Anonymous inner classes | Keypad buttons, switches, maze circle icon, launcher role choice |
 | AWT / Swing components | `JButton`, `JLabel`, `JRadioButton` + `ButtonGroup` (checkbox group), `JTextField`, `JTextArea`, `JComboBox` (choice), `JList`, `JMenuBar` / `JMenu`, `JPanel`, `JScrollPane` (scrollbar), `JToggleButton`, `JTable` |
 | Layout managers | `BorderLayout`, `GridLayout`, `GridBagLayout`, `FlowLayout`, `CardLayout` |

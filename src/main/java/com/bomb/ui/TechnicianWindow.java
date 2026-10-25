@@ -3,7 +3,7 @@ package com.bomb.ui;
 import com.bomb.game.Bomb;
 import com.bomb.game.ScoreFile;
 import com.bomb.puzzles.ButtonPuzzle;
-import com.bomb.puzzles.ColoursPuzzle;
+import com.bomb.puzzles.ColourCodePuzzle;
 import com.bomb.puzzles.KeypadPuzzle;
 import com.bomb.puzzles.MazePuzzle;
 import com.bomb.puzzles.Puzzle;
@@ -88,7 +88,7 @@ public class TechnicianWindow extends JFrame {
     private JPanel puzzleGrid() {
         List<Function<Bomb, Puzzle>> all = new ArrayList<>(List.of(
                 WiresPuzzle::new, SymbolsPuzzle::new, KeypadPuzzle::new, ButtonPuzzle::new,
-                ShapesPuzzle::new, MazePuzzle::new, SwitchesPuzzle::new, ColoursPuzzle::new));
+                ShapesPuzzle::new, MazePuzzle::new, SwitchesPuzzle::new, ColourCodePuzzle::new));
         Collections.shuffle(all);
         JPanel grid = new JPanel(new GridLayout(2, 3, 16, 16));
         grid.setOpaque(false);

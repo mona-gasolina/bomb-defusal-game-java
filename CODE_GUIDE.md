@@ -59,7 +59,7 @@ Spring Boot runs these on its built-in **Apache Tomcat**.
 | File | What it does |
 |---|---|
 | `Bomb` | The bomb: random serial number, batteries, timer, strikes and solved count. `strike()` adds a strike (3 = explode). `solved()` counts a solved puzzle (all solved = defused). `secondsLeft()` works out the time from the end time. |
-| `GameFiles` | Reads the text files in `resources/data` with a `BufferedReader`. Turns them into lists and maps (the manual sections, symbol table, switch table, colour table, words). |
+| `GameFiles` | Reads the text files in `resources/data` with a `BufferedReader`. Turns them into lists and maps (the manual sections, symbol table, switch table, colour digits, words). |
 | `Maze` | Loads the 6 mazes from `mazes.txt` and answers "is there a wall between these two cells?". |
 | `ScoreFile` | Writes every finished game to `scores.csv` with a `FileWriter`, and reads the best ones back with a `FileReader`. |
 
@@ -77,7 +77,7 @@ can never disagree. To change a rule table, you just edit a text file.
 | `words.txt` | The 5-letter words for the Symbols puzzle. |
 | `mazes.txt` | 6 mazes drawn with `#` for walls and `O` for circles. |
 | `switches.txt` | Light pattern to switch positions. |
-| `colours.txt` | Flashed colour to colour to press (depends on vowel + strikes). |
+| `colours.txt` | The digit each light colour stands for (RED 3, BLUE 7, GREEN 1, YELLOW 9). |
 
 ---
 
@@ -99,7 +99,7 @@ Every puzzle **extends `Puzzle`**. The parent class:
 | `ShapesPuzzle` | 4 random shapes. A `Timer` flashes them one by one. `work()` does the maths (star +, circle -, triangle x). |
 | `MazePuzzle` | A 6 x 6 grid of buttons. Clicking a cell next to you moves you, unless `Maze.blocked()` says there is a wall (strike). |
 | `SwitchesPuzzle` | Random lights. Looks up the right switch positions in `switches.txt`. `JToggleButton`s with an `ItemListener`. |
-| `ColoursPuzzle` | A `Timer` flashes the sequence. Each press is checked against `colours.txt`, using the strikes the bomb has right now. |
+| `ColourCodePuzzle` | 4 random coloured lights. The answer is their digits from `colours.txt`, typed backwards if the serial has a vowel. |
 
 `TechnicianWindow` puts all 8 puzzle makers in a list, **shuffles** it and
 uses the first 6. That is how each bomb is different.
@@ -125,7 +125,7 @@ uses the first 6. That is how each bomb is different.
 | Topic | Look at |
 |---|---|
 | Event listeners | `ActionListener` in every button, `ItemListener` in `SwitchesPuzzle` and `Launcher`, `ListSelectionListener` in `AnalystWindow` |
-| Adapter classes | `MouseAdapter` in `WiresPuzzle`, `ButtonPuzzle`, `ColoursPuzzle`; `WindowAdapter` in both windows |
+| Adapter classes | `MouseAdapter` in `WiresPuzzle` and `ButtonPuzzle`; `WindowAdapter` in both windows |
 | Anonymous inner classes | `new ActionListener() {...}` in `KeypadPuzzle`, `new ItemListener() {...}` in `SwitchesPuzzle`, `new Icon() {...}` in `MazePuzzle` |
 | Layout managers | `BorderLayout`, `GridLayout`, `GridBagLayout`, `FlowLayout`, `CardLayout` |
 | Menus | `JMenuBar` in `TechnicianWindow` and `AnalystWindow` |

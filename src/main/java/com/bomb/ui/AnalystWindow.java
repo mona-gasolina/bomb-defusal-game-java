@@ -160,14 +160,10 @@ public class AnalystWindow extends JFrame {
                 GameFiles.switchTable().forEach((lights, switches) ->
                         sb.append(String.format("  %-18s  %s%n", lights, switches)));
             }
-            case "COLOURS" -> {
-                sb.append("  VOWEL?  STRIKES   RED      BLUE     GREEN    YELLOW\n\n");
-                GameFiles.colourTable().forEach((key, row) -> {
-                    String[] k = key.split(" ");
-                    sb.append(String.format("  %-6s  %-8s  %-8s %-8s %-8s %-8s%n", k[0], k[1],
-                            row.get("RED"), row.get("BLUE"), row.get("GREEN"), row.get("YELLOW")));
-                });
-                sb.append("\n  Example: vowel YES, 0 strikes, RED flashes  ->  press BLUE");
+            case "COLOUR CODE" -> {
+                sb.append("  COLOUR    DIGIT\n\n");
+                GameFiles.colourDigits().forEach((colour, digit) ->
+                        sb.append(String.format("  %-8s  %s%n", colour, digit)));
             }
             default -> {
                 return "";

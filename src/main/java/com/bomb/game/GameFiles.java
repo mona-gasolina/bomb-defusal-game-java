@@ -68,18 +68,9 @@ public final class GameFiles {
         return table("switches.txt");
     }
 
-    // colours.txt lines look like "YES 0 | RED=BLUE BLUE=RED GREEN=YELLOW YELLOW=GREEN"
-    public static Map<String, Map<String, String>> colourTable() {
-        Map<String, Map<String, String>> result = new LinkedHashMap<>();
-        table("colours.txt").forEach((key, pairs) -> {
-            Map<String, String> row = new LinkedHashMap<>();
-            for (String pair : pairs.split(" ")) {
-                String[] p = pair.split("=");
-                row.put(p[0], p[1]);
-            }
-            result.put(key, row);
-        });
-        return result;
+    // colours.txt lines look like "RED | 3"
+    public static Map<String, String> colourDigits() {
+        return table("colours.txt");
     }
 
     // Reads "left | right" lines into a map. Lines starting with # are comments.
