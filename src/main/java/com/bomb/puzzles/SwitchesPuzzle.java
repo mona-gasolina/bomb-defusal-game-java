@@ -75,7 +75,7 @@ public class SwitchesPuzzle extends Puzzle {
     }
 
     private void check() {
-        if (isSolved()) return;
+        if (locked()) return;
         if (current().equals(target)) solve();
         else strike();
     }

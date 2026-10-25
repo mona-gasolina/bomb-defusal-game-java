@@ -17,4 +17,9 @@ public class GameService {
     public synchronized Bomb getBomb() {
         return bomb;
     }
+
+    // The technician went back to the menu: the analyst should see "no bomb yet"
+    public synchronized void clear() {
+        bomb = null;
+    }
 }

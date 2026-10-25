@@ -19,6 +19,7 @@ import javax.swing.SwingWorker;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -153,7 +154,7 @@ public class Launcher extends JFrame {
         }.execute();
     }
 
-    private void addField(JPanel form, GridBagConstraints c, int row, String text, java.awt.Component input) {
+    private void addField(JPanel form, GridBagConstraints c, int row, String text, Component input) {
         c.gridy = row;
         c.gridx = 0;
         c.anchor = GridBagConstraints.EAST;

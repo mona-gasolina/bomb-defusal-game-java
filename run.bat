@@ -5,3 +5,5 @@ if exist bomb-defusal.jar (
 ) else (
     java -jar target\bomb-defusal.jar
 )
+rem keep the window open if something went wrong (for example Java is not installed)
+if errorlevel 1 pause

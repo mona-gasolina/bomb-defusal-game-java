@@ -82,6 +82,7 @@ public class ButtonPuzzle extends Puzzle {
     private void checkTaps() {
         int n = taps;
         taps = 0;
+        if (locked()) return;
         boolean right = (action == Action.PRESS && n == 1) || (action == Action.TAP && n == tapsNeeded);
         if (right) solve();
         else strike();
@@ -101,7 +102,7 @@ public class ButtonPuzzle extends Puzzle {
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    if (isSolved()) return;
+                    if (locked()) return;
                     pressedAt = System.currentTimeMillis();
                     holding = true;
                     repaint();
@@ -109,7 +110,7 @@ public class ButtonPuzzle extends Puzzle {
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
-                    if (isSolved() || !holding) return;
+                    if (locked() || !holding) return;
                     holding = false;
                     repaint();
                     released(System.currentTimeMillis() - pressedAt);

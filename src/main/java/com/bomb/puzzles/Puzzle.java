@@ -60,6 +60,11 @@ public abstract class Puzzle extends JPanel {
         return solved;
     }
 
+    // true when clicks should be ignored: already solved, or the game is over
+    protected boolean locked() {
+        return solved || bomb.getState() != Bomb.State.RUNNING;
+    }
+
     protected void solve() {
         if (solved) return;
         solved = true;

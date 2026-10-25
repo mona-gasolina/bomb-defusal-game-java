@@ -59,7 +59,7 @@ public class WiresPuzzle extends Puzzle {
     }
 
     private void cutWire(int i) {
-        if (isSolved() || cut[i]) return;
+        if (locked() || cut[i]) return;
         cut[i] = true;
         if (i == answer) solve();
         else strike();

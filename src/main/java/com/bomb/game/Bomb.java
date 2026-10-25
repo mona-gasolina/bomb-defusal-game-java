@@ -27,9 +27,10 @@ public class Bomb {
         this.endTime = System.currentTimeMillis() + minutes * 60_000L;
     }
 
-    // 5 random letters/digits, and the last one is always a digit
+    // 5 random letters/digits, and the last one is always a digit.
+    // There is no letter O, so it can't be mixed up with zero.
     private static String makeSerial() {
-        String chars = "ABCDEFGHIJKLMNPQRSTUVWXZ0123456789";
+        String chars = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 5; i++) {
             sb.append(chars.charAt(random.nextInt(chars.length())));

@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -50,7 +51,9 @@ public class AnalystWindow extends JFrame {
 
     public AnalystWindow(String host) {
         super("Bomb Defusal - Analyst manual");
-        String address = host.isEmpty() ? "localhost" : host;
+        // accept "192.168.1.5", "192.168.1.5:8080" or even "http://192.168.1.5/"
+        String address = host.replace("http://", "").replaceAll("[/\\s]+", "");
+        if (address.isEmpty()) address = "localhost";
         statusUrl = "http://" + (address.contains(":") ? address : address + ":8080") + "/api/status";
 
         Map<String, String> manual = GameFiles.manual();
@@ -193,8 +196,14 @@ public class AnalystWindow extends JFrame {
     // Asks the technician's laptop for the time and strikes (without freezing the screen)
     private void poll() {
         if (waiting) return;
+        HttpRequest request;
+        try {
+            request = HttpRequest.newBuilder(URI.create(statusUrl)).timeout(Duration.ofSeconds(2)).build();
+        } catch (IllegalArgumentException badAddress) {
+            setStatus("BAD IP ADDRESS", Theme.RED);
+            return;
+        }
         waiting = true;
-        HttpRequest request = HttpRequest.newBuilder(URI.create(statusUrl)).timeout(Duration.ofSeconds(2)).build();
         http.sendAsync(request, HttpResponse.BodyHandlers.ofString()).whenComplete((response, error) ->
                 SwingUtilities.invokeLater(() -> {
                     waiting = false;
@@ -229,7 +238,7 @@ public class AnalystWindow extends JFrame {
         timer.setText("--:--");
     }
 
-    private void setStatus(String text, java.awt.Color colour) {
+    private void setStatus(String text, Color colour) {
         status.setText(text);
         status.setForeground(colour);
     }
