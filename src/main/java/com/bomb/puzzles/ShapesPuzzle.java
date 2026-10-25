@@ -82,9 +82,11 @@ public class ShapesPuzzle extends Puzzle {
         int n = 0;
         for (int i = 0; i < 4; i++) {
             int v = VALUES[colour[i]];
-            if (shape[i] == STAR) n += v;
-            else if (shape[i] == CIRCLE) n -= v;
-            else n *= v;
+            switch (shape[i]) {
+                case STAR -> n += v;
+                case CIRCLE -> n -= v;
+                case TRIANGLE -> n *= v;
+            }
         }
         return n;
     }
@@ -144,9 +146,11 @@ public class ShapesPuzzle extends Puzzle {
             if (showing >= 0) {
                 g2.setColor(COLOURS[colour[showing]]);
                 int cx = w / 2, cy = h / 2 - 8, r = 32;
-                if (shape[showing] == STAR) g2.fillPolygon(star(cx, cy, r));
-                else if (shape[showing] == CIRCLE) g2.fillOval(cx - r, cy - r, 2 * r, 2 * r);
-                else g2.fillPolygon(new int[]{cx, cx + r, cx - r}, new int[]{cy - r, cy + r - 4, cy + r - 4}, 3);
+                switch (shape[showing]) {
+                    case STAR -> g2.fillPolygon(star(cx, cy, r));
+                    case CIRCLE -> g2.fillOval(cx - r, cy - r, 2 * r, 2 * r);
+                    case TRIANGLE -> g2.fillPolygon(new int[]{cx, cx + r, cx - r}, new int[]{cy - r, cy + r - 4, cy + r - 4}, 3);
+                }
             }
             // 4 dots under the shape show which one of the 4 is on screen
             for (int i = 0; i < 4; i++) {

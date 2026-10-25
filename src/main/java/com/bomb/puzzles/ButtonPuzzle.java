@@ -20,7 +20,8 @@ import java.awt.event.MouseEvent;
 // it must be PRESSED once, TAPPED a few times or HELD and released at the right moment.
 public class ButtonPuzzle extends Puzzle {
 
-    private static final int RED = 0, BLUE = 1, YELLOW = 2, WHITE = 3;
+    // colour order in COLOURS: 0 red, 1 blue, 2 yellow, 3 white
+    private static final int BLUE = 1, YELLOW = 2, WHITE = 3;
     private static final Color[] COLOURS = {
             new Color(0xB83A2E), new Color(0x2A6FC4), new Color(0xE0B81A), new Color(0xE8E6E0)};
     private static final String[] WORDS = {"DETONATE", "HOLD", "ABORT", "PRESS"};

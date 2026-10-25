@@ -17,7 +17,8 @@ import java.awt.event.MouseEvent;
 // 3 to 6 coloured wires. The manual says which ONE to cut.
 public class WiresPuzzle extends Puzzle {
 
-    private static final int RED = 0, BLUE = 1, YELLOW = 2, WHITE = 3, BLACK = 4;
+    // colour order in COLOURS: 0 red, 1 blue, 2 yellow, 3 white, 4 black
+    private static final int RED = 0, BLUE = 1, WHITE = 3, BLACK = 4;
     private static final Color[] COLOURS = {
             new Color(0xC8392B), new Color(0x2A6FC4), new Color(0xE0B81A), new Color(0xE8E6E0), new Color(0x1A1A1A)};
     private static final int ROW = 22;
