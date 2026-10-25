@@ -25,6 +25,7 @@ import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -135,7 +136,7 @@ public class TechnicianWindow extends JFrame {
         return bar;
     }
 
-    private static JPanel centred(java.awt.Component c) {
+    private static JPanel centred(Component c) {
         JPanel p = new JPanel(new GridBagLayout());
         p.setOpaque(false);
         p.add(c);
@@ -204,13 +205,18 @@ public class TechnicianWindow extends JFrame {
         int choice = JOptionPane.showOptionDialog(this, message, won ? "Defused" : "Exploded",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         close();
-        if (choice == 0) new TechnicianWindow(game, team, minutes);
-        else new Launcher();
+        if (choice == 0) {
+            new TechnicianWindow(game, team, minutes);
+        } else {
+            game.clear();
+            new Launcher();
+        }
     }
 
     private void leave() {
         if (over || confirm("Leave this bomb and go back to the main menu?")) {
             close();
+            game.clear();
             new Launcher();
         }
     }

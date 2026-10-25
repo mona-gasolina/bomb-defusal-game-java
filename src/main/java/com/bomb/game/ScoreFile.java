@@ -39,7 +39,8 @@ public final class ScoreFile {
             String line;
             while ((line = in.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 5 && parts[2].equals("DEFUSED")) rows.add(parts);
+                // skip broken lines (for example if someone edited the file by hand)
+                if (parts.length == 5 && parts[2].equals("DEFUSED") && parts[3].matches("\\d+")) rows.add(parts);
             }
         } catch (IOException e) {
             System.err.println("Could not read scores: " + e.getMessage());

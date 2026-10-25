@@ -60,7 +60,7 @@ public class SymbolsPuzzle extends Puzzle {
     }
 
     private void check() {
-        if (isSolved()) return;
+        if (locked()) return;
         if (input.getText().trim().equalsIgnoreCase(answer)) {
             solve();
         } else {

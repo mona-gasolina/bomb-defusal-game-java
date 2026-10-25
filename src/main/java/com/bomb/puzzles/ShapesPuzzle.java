@@ -96,7 +96,7 @@ public class ShapesPuzzle extends Puzzle {
     }
 
     private void key(String key) {
-        if (isSolved()) return;
+        if (locked()) return;
         switch (key) {
             case "C" -> typed = "";
             case "-" -> {

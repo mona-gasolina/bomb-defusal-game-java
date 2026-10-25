@@ -68,7 +68,7 @@ public class KeypadPuzzle extends Puzzle {
     }
 
     private void press(int dir) {
-        if (isSolved()) return;
+        if (locked()) return;
         if (dir == realArrow(shown[step])) {
             step++;
             if (step == shown.length) solve();

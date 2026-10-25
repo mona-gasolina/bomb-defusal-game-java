@@ -79,7 +79,7 @@ public class MazePuzzle extends Puzzle {
     }
 
     private void goTo(int r, int c) {
-        if (isSolved()) return;
+        if (locked()) return;
         boolean nextTo = Math.abs(r - row) + Math.abs(c - col) == 1;
         if (!nextTo) return;
         if (maze.blocked(row, col, r, c)) {

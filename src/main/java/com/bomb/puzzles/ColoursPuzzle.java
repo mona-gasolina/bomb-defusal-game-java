@@ -62,7 +62,7 @@ public class ColoursPuzzle extends Puzzle {
     }
 
     private void press(int pressed) {
-        if (isSolved()) return;
+        if (locked()) return;
         String key = (bomb.hasVowel() ? "YES " : "NO ") + bomb.getStrikes();
         String expected = table.get(key).get(NAMES[sequence[step]]);
         if (NAMES[pressed].equals(expected)) {
