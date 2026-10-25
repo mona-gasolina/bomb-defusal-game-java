@@ -32,9 +32,11 @@ public class ColoursPuzzle extends Puzzle {
     private final int[] sequence = new int[ROUNDS];
     private final Pad[] pads = new Pad[4];
     private final JLabel roundLabel = Theme.label("ROUND 1/3", Theme.mono(14), Theme.MUTED);
+    private final Dots dots = new Dots();
     private final Timer flasher;
     private int round = 1, step;
     private int lit = -1, tick;
+    private int flashNumber = -1; // which flash of this round is showing, -1 means none
 
     public ColoursPuzzle(Bomb bomb) {
         super("COLOURS", bomb);
@@ -47,7 +49,8 @@ public class ColoursPuzzle extends Puzzle {
             grid.add(pads[i]);
         }
         addRow(grid, 0);
-        addRow(roundLabel, 1);
+        addRow(dots, 1);
+        addRow(roundLabel, 2);
 
         flasher = new Timer(500, e -> flash());
         flasher.start();
@@ -57,8 +60,10 @@ public class ColoursPuzzle extends Puzzle {
     private void flash() {
         int cycle = round * 2 + 4;
         tick = (tick + 1) % cycle;
-        lit = (tick < round * 2 && tick % 2 == 0) ? sequence[tick / 2] : -1;
+        flashNumber = (tick < round * 2 && tick % 2 == 0) ? tick / 2 : -1;
+        lit = flashNumber >= 0 ? sequence[flashNumber] : -1;
         for (Pad p : pads) p.repaint();
+        dots.repaint();
     }
 
     private void press(int pressed) {
@@ -85,7 +90,32 @@ public class ColoursPuzzle extends Puzzle {
     public void stop() {
         flasher.stop();
         lit = -1;
+        flashNumber = -1;
         for (Pad p : pads) p.repaint();
+        dots.repaint();
+    }
+
+    // One dot per flash in this round. The dot lights up while its colour is flashing.
+    private class Dots extends JComponent {
+
+        Dots() {
+            Dimension size = new Dimension(80, 12);
+            setPreferredSize(size);
+            setMinimumSize(size);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            int shown = Math.min(round, ROUNDS);
+            int x = (getWidth() - (shown * 16 - 7)) / 2;
+            for (int i = 0; i < shown; i++) {
+                g2.setColor(i == flashNumber ? Theme.KHAKI : Theme.BORDER);
+                g2.fillOval(x + i * 16, 1, 9, 9);
+            }
+            g2.dispose();
+        }
     }
 
     // One coloured square. Bright when it flashes, dark otherwise.
@@ -95,7 +125,9 @@ public class ColoursPuzzle extends Puzzle {
 
         Pad(int index) {
             this.index = index;
-            setPreferredSize(new Dimension(70, 52));
+            Dimension size = new Dimension(70, 44);
+            setPreferredSize(size);
+            setMinimumSize(size); // never squash the pads away on small screens
             setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             addMouseListener(new MouseAdapter() {
                 @Override
