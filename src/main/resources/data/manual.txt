@@ -1,0 +1,150 @@
+## HOW TO PLAY
+You are the ANALYST. You cannot see the bomb.
+The TECHNICIAN can see the bomb but cannot see this manual.
+
+Ask the technician what they see, find the matching rule in this
+manual, and tell them exactly what to do.
+
+  - Every bomb has 6 puzzles, picked at random from the 8 in this manual.
+  - Each puzzle has a small light. It turns GREEN when the puzzle is solved.
+  - Every mistake is a STRIKE. 3 strikes and the bomb explodes.
+  - Solve all 6 puzzles before the timer reaches 00:00.
+
+Words used in this manual:
+  SERIAL NUMBER  Printed on the yellow sticker. Its last character
+                 is always a digit (0-9).
+  VOWEL          One of A, E, I, O, U.
+  BATTERIES      Also printed on the yellow sticker.
+
+Pick a puzzle from the list on the left.
+
+## WIRES
+The bomb has 3 to 6 coloured wires, numbered from the top.
+Cut ONE wire by clicking it.
+
+Check these rules in order. Use the FIRST rule that matches:
+
+  1. No red wires?
+       Cut the SECOND wire.
+  2. Last digit of the serial number is ODD and there is more
+     than one red wire?
+       Cut the LAST red wire.
+  3. The last wire is white?
+       Cut the LAST wire.
+  4. More than one blue wire?
+       Cut the LAST blue wire.
+  5. Anything else:
+       Cut the FIRST wire.
+
+Cutting the wrong wire is a strike.
+
+## SYMBOLS
+The bomb shows 5 strange symbols. Each symbol stands for one letter.
+Ask the technician to describe each symbol, find it in the table
+below and work out the 5-letter word.
+
+The technician types the word and presses ENTER.
+
+  If the bomb has MORE THAN 2 batteries, the word must be typed
+  BACKWARDS (for example TIMER becomes REMIT).
+
+A wrong word is a strike.
+
+## KEYPAD
+The bomb has 8 arrow buttons and a small screen that shows 4 arrows.
+The arrows on the screen are LIES. Do not press what you see.
+
+For each arrow on the screen, find the real arrow in the table and
+press the 4 real arrows in the same order.
+
+  Last digit of the serial number is EVEN  ->  use TABLE A
+  Last digit of the serial number is ODD   ->  use TABLE B
+
+  SCREEN SHOWS     TABLE A (EVEN)     TABLE B (ODD)
+  UP               RIGHT              DOWN
+  UP-RIGHT         DOWN-RIGHT         DOWN-LEFT
+  RIGHT            DOWN               LEFT
+  DOWN-RIGHT       DOWN-LEFT          UP-LEFT
+  DOWN             LEFT               UP
+  DOWN-LEFT        UP-LEFT            UP-RIGHT
+  LEFT             UP                 RIGHT
+  UP-LEFT          UP-RIGHT           DOWN-RIGHT
+
+A wrong press is a strike and the sequence starts again from the
+first arrow.
+
+## BUTTON
+The bomb has one big button. Ask for its COLOUR and the WORD on it.
+
+Check these rules in order. Use the FIRST rule that matches:
+
+  1. Blue button that says ABORT                  ->  HOLD
+  2. More than 1 battery and the button
+     says DETONATE                                ->  PRESS
+  3. White button and the serial number
+     has a vowel                                  ->  TAP 3 times
+  4. Yellow button                                ->  HOLD
+  5. More than 2 batteries                        ->  TAP 2 times
+  6. Anything else                                ->  HOLD
+
+  PRESS  Click once and let go.
+  TAP    Click quickly that many times in a row.
+  HOLD   Press and keep holding. Let go only when the LAST digit
+         of the timer is 4 (for example 03:14 or 02:44).
+
+Doing the wrong thing is a strike.
+
+## SHAPES
+The bomb flashes 4 coloured shapes, one after another, then repeats.
+Ask the technician to read out each shape and its colour, in order.
+
+Start with the number 0. Go through the shapes in order:
+
+  STAR       add the colour's value
+  CIRCLE     subtract the colour's value
+  TRIANGLE   multiply by the colour's value
+
+  COLOUR VALUES   RED = 2   BLUE = 3   YELLOW = 5   GREEN = 4
+
+Example: yellow star, red triangle, blue circle, green star
+  0 + 5 = 5,  5 x 2 = 10,  10 - 3 = 7,  7 + 4 = 11   ->  answer 11
+
+The technician types the final number on the keypad and presses OK.
+The answer can be negative (use the - key first).
+
+A wrong number is a strike.
+
+## MAZE
+The technician sees a 6 x 6 grid with two circles. The walls of the
+maze are INVISIBLE to them.
+
+  1. Ask where the two circles are (column A-F, row 1-6).
+  2. Find the maze below that has circles in the same two places.
+  3. The technician starts on the circle that is HIGHER UP
+     (it is lit up on the bomb).
+  4. Guide them one box at a time to the other circle.
+     Moves are up, down, left or right only.
+
+Walking into a wall is a strike.
+
+## SWITCHES
+The bomb has 3 lights and 5 switches.
+Ask which lights are ON, find that row in the table below, and have
+the technician set the 5 switches the same way (switch 1 is on the
+left). Then they press SET.
+
+Wrong switches when SET is pressed is a strike.
+
+## COLOURS
+The bomb flashes a sequence of coloured lights. For every colour that
+flashes, the technician must press a DIFFERENT colour from the table.
+
+Which row to use depends on two things:
+  - does the serial number have a vowel?
+  - how many strikes does the bomb have RIGHT NOW?
+
+The sequence starts with 1 colour. Each time it is entered correctly
+it gets one colour longer. Finish 3 rounds to solve it.
+
+A wrong press is a strike and the round starts again.
+(Remember: after a strike, use the row for the new strike count!)
