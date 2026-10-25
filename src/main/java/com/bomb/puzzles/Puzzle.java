@@ -49,7 +49,7 @@ public abstract class Puzzle extends JPanel {
     }
 
     // Adds a part to the body on the given row, centred
-    protected void addRow(Component part, int row) {
+    protected final void addRow(Component part, int row) {
         GridBagConstraints c = new GridBagConstraints();
         c.gridy = row;
         c.insets = new Insets(4, 0, 4, 0);
