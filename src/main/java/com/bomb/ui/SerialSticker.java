@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-// The slightly crooked yellow sticker with the serial number and batteries
+// The yellow sticker with the serial number and batteries
 public class SerialSticker extends JComponent {
 
     private final String serial;
@@ -26,7 +26,6 @@ public class SerialSticker extends JComponent {
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         int w = 270, h = 72;
         g2.translate((getWidth() - w) / 2, (getHeight() - h) / 2);
-        g2.rotate(Math.toRadians(2), w / 2.0, h / 2.0);
 
         g2.setColor(new Color(0xE8DFA8));
         g2.fillRect(0, 0, w, h);

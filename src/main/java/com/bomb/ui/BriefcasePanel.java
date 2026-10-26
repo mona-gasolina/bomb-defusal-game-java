@@ -10,7 +10,7 @@ import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.util.Random;
 
-// Background of the bomb window: a metal briefcase with a handle, brackets and hazard stripes
+// Background of the bomb window: a metal briefcase with a handle and brackets
 public class BriefcasePanel extends JPanel {
 
     private boolean exploded;
@@ -68,16 +68,6 @@ public class BriefcasePanel extends JPanel {
             g2.fillRect(x - 14, hy, 26, 60);
             g2.fillRect(x + cw - 12, hy, 26, 60);
         }
-
-        // hazard stripes along the bottom
-        g2.setClip(x + 40, y + ch - 20, cw - 80, 16);
-        g2.setColor(new Color(0x1A1A1A));
-        g2.fillRect(x + 40, y + ch - 20, cw - 80, 16);
-        g2.setColor(new Color(0xD6A900));
-        for (int sx = x + 20; sx < x + cw; sx += 40) {
-            g2.fillPolygon(new int[]{sx, sx + 20, sx + 36, sx + 16}, new int[]{y + ch - 4, y + ch - 4, y + ch - 20, y + ch - 20}, 4);
-        }
-        g2.setClip(null);
 
         // red flash when the bomb explodes
         if (exploded) {
